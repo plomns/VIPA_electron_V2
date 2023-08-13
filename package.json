@@ -1,0 +1,36 @@
+{
+  "name": "vipa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "Plomns",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "electron": "^22.3.10",
+    "electron-builder": "^23.6.0"
+  },
+  "dependencies": {
+    "@editorjs/editorjs": "^2.26.4",
+    "@electron/remote": "^2.0.9",
+    "axios": "^1.2.6",
+    "bootstrap-icons": "^1.10.5",
+    "dialogs": "^2.0.1",
+    "jquery": "^3.6.3",
+    "jsmediatags": "^3.9.7",
+    "node-id3": "^0.2.6",
+    "youtube-music-api": "^1.0.6",
+    "ytdl-core": "github:ShantanuNair/node-ytdl-core#v4.11.3-patch.1"
+  }
+}

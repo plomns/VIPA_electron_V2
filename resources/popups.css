@@ -1,0 +1,125 @@
+.popup {
+  z-index: 9;
+  background-color: rgb(44, 44, 44);
+  border-radius: 25px;
+  text-align: center;
+  min-height: 150px;
+  min-width: 300px;
+  border: 1px solid #ffd700;
+  box-shadow: 0 0 10px white;
+  color: white;
+  position: absolute;
+  resize: both;
+  overflow: auto;
+  display: none;
+}
+
+.popup-header {
+  fill: white;
+}
+
+/*NOSELECT*/
+
+.popup * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#modelviewer {
+  top: 20%;
+  left: 42%;
+}
+
+#musicplayer {
+  top: 20%;
+  left: 42%;
+}
+
+#custom-seekbar
+{  
+  cursor: pointer;
+  height: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ffd700;
+  overflow: hidden;
+  position: relative;
+  width: 80%;
+  margin: auto;
+  border-radius: 25px;
+}
+
+#custom-seekbar span
+{
+  background-color: rgb(160, 157, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10px;
+  width: 0px;
+}
+
+#custom-seekbar span.hover:after{
+  content: '■';
+  display:block;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  bottom: 1;
+  right: 0;
+}
+
+#songChoice, #playListChoice {
+  border: 1px rgb(185, 185, 185) solid;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#songResults {
+  max-width: 25vw;
+  max-height: 30vh;
+  overflow: scroll;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#songChoice:hover, #playListChoice:hover {
+  background-color: #5a5a5a;
+}
+
+#songChoice, #playListChoice {
+  width: 95%;
+  margin: auto;
+  margin-top: 5px;
+}
+
+#context-menu{
+  display: none;
+  position: fixed;
+  z-index: inherit;
+  border: 1px gray solid;
+  border-radius: 14px;
+  background: #686868;
+  width: calc(max-content + 15px);
+}
+
+#removeFromPlayList {
+  display: none;
+}
+
+.songMenuChoice {
+  border: 1px solid;
+  border-radius: 15px;
+  margin-top: 2%;
+  padding: 5px;
+}
+
+.songMenuChoice:hover{
+  background: #383838;
+}

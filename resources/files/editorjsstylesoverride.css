@@ -1,0 +1,30 @@
+.ce-block--selected .ce-block__content, .ce-inline-toolbar,
+.codex-editor--narrow .ce-toolbox,
+.ce-conversion-toolbar, .ce-settings, .ce-settings__button,
+.ce-toolbar__settings-btn, .cdx-button {
+    background: rgb(0, 0, 0);
+    color: inherit;
+}
+
+.ce-inline-tool, .ce-conversion-toolbar__label, .ce-toolbox__button, .cdx-settings-button, .ce-toolbar__plus, .ce-popover, .cdx-search-field, .ce-popover__item-icon {
+    background-color: rgb(0, 0, 0);
+    color: inherit;
+}
+
+.ce-popover__item:hover {
+    background: rgba(34,186,255,.15);
+}
+
+.cdx-search-field__input {
+    color: white;
+}
+
+.ce-settings--opened {
+    margin-left: -115px;
+}
+
+.cdx-settings-button:hover, .ce-settings__button:hover, .ce-toolbox__button--active, .ce-toolbox__button:hover,
+.cdx-button:hover, .ce-inline-toolbar__dropdown:hover, .ce-inline-tool:hover {
+    background-color: rgb(0, 0, 0);
+    color: inherit;
+}

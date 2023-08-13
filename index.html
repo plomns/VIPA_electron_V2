@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>V.I.P.A</title>
+        <link href="./resources/files/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <link href="./resources/circlething.css" rel="stylesheet"/>
+        <link href="./resources/popups.css" rel="stylesheet"/>
+        <link href="./resources/files/editorjsstylesoverride.css" rel="stylesheet"/>
+        <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
+        <style>
+            body {
+                font: 14px sans-serif;
+                text-align: center;
+                overflow: hidden;
+            }
+            .test {
+                z-index: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maineverything">
+
+            <div class="popup" id="musicplayer" style="display: none; max-height: 435px; min-width: 690px;">
+                <div>
+                    <svg class="popup-header" class="bi bi-grip-horizontal" viewbox="0 0 16 16" style="margin: auto; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;" oncontextmenu="exitPopup(this)">
+                    </svg>
+                </div>
+                <div id="context-menu">
+                    <ul style="padding: 5px;">
+                        <li class="songMenuChoice" id="addToPlayList" onclick="addToPlayHandler()">Add to a playlist</li>
+                        <li class="songMenuChoice" id="removeFromPlayList" onclick="removeSongFromPlaylist()">Remove from this playlist</li>
+                        <li class="songMenuChoice" onclick="delSong()">Delete Song</li>
+                    </ul>
+                </div>
+
+                <div id="playlistscontext-menu" style="
+                    display: none;
+                    left: 259px;
+                    top: 203px;
+                    position: fixed;
+                    z-index: inherit;
+                    background: rgb(104, 104, 104);
+                    border-radius: 15px;
+                ">
+                    <ul style="padding: 5px;">
+                        <li class="songMenuChoice" id="delPlaylist" onclick="removePlaylist()">Delete Playlist</li>
+                        <li class="songMenuChoice" onclick="mkplaylisthelper()">Create Playlist</li>
+                    </ul>
+                </div>
+
+                <ul id="addToPlayListList" style="padding: 5px; position: fixed; z-index: inherit; background: #686868; display: none;" class="songMenuChoice">
+
+                </ul>
+                <button id="libButton" onclick="showLib()" style="position: absolute; width: 2.5vw; height: 3.5vh; float: left; left: 5%; top: 5%; background: white; border: none; border-radius: 25px;"><b>☰</b></button>
+                <button id="playlistsButton" onclick="showPlayLists()" style="position: absolute;width: 2.5vw;height: 3.5vh;float: left;left: 2%;top: 15%;background: white;border: none;border-radius: 25px; display: none;"><b><i class="bi bi-music-note-list"></i></b></button>
+                <ul id="playListDisplay" style="overflow: auto;position: absolute;border: 1px solid rgb(255, 215, 0);border-radius: 25px;left: 10%;top: 2%;width: 20%;height: 50%;background: rgb(60, 60, 60);display: none;"></ul>
+                <img id="songArt" style="height: auto; width: 40%;">
+                <p id="currentTrack"></p>
+                <p id="currentArtist"></p>
+                <p id="timeStamp">0:00 / 0:00</p>
+
+                <ul id="library" style="overflow: auto; position: absolute; border: 1px #ffd700 solid; border-radius: 25px; right: 2%; top: 2%; width: 50%; height: 80%; background: #3c3c3c; display: none;">
+                </ul>
+
+                <div style="position: relative">
+                    <div id="custom-seekbar">
+                        <span></span>
+                    </div>
+                    <button onclick="pausePlay(this)" id="playButton" style="background: none; border: none;"><i class="bi bi-play-fill" style="font-size: xxx-large; color: white;"></i></button>
+                    <button onclick="back()" style="background: none; border: none;"><i class="bi bi-skip-backward-fill" style="font-size: xxx-large; color: white;"></i></button>
+                    <button onclick="next()" style="background: none; border: none;"><i class="bi bi-skip-forward-fill" style="font-size: xxx-large; color: white;"></i></button>
+                    <!-- <button onclick="sync()" style="background: none; border: none;"><i class="bi bi-cloud-arrow-up" style="font-size: xxx-large; color: white;"></i></button> -->
+                    <input type="text" style="text-align: center; border: none; border-radius: 25px; position: absolute; right: 1%; top: 40%;" value="" placeholder="Search" onkeydown="showSongList(this)"/>
+                </div>
+            </div>
+
+            <div class="popup" id="songResults" style="display: none"> <!-- songResults -->
+                <div>
+                    <svg class="popup-header" class="bi bi-grip-horizontal" viewbox="0 0 16 16" style="margin: auto; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"  oncontextmenu="exitPopup(this)">
+                    </svg>
+                </div>
+                <ul id="myList" style="position: relative; margin-top: 10%;"></ul>
+            </div>
+
+            <div class="popup" id="modelviewer" style="display: none"> <!-- Model Viewer -->
+                <div>
+                    <svg class="popup-header" class="bi bi-grip-horizontal" viewbox="0 0 16 16" style="margin: auto; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;" oncontextmenu="exitPopup(this)">
+                    </svg>
+                </div>
+            </div>
+
+            <div class="popup" style="overflow-x: hidden; display: none; top: 20%; left: 42%; max-height: 600px !important; max-width: 670px !important;"> <!-- Notepad -->
+                <div>
+                    <svg class="popup-header" class="bi bi-grip-horizontal" viewbox="0 0 16 16" style="margin: auto; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;" oncontextmenu="exitPopup(this)">
+                    </svg>
+                </div>
+                <div style="position: relative; width: fit-content;">
+                    <div onclick="saveJson()" class="btn btn-dark">Save</div>
+                    <label for="load">
+                        <div class="btn btn-dark">Load</div>
+                    </label>
+                    <input id="load" type="file" style="display: none;"/>
+                </div>
+                <div id="notepad"></div>
+            </div>
+            
+            <input class="vipacommandline" type="text" name="vipacommandline" value="" placeholder="What would you like?" onkeydown="search(this)"/>
+
+            <div class="circle"></div>
+        </div>
+    </body>
+    <script src="./resources/files/header.js"></script>
+    <script src="./resources/files/paragraph.js"></script>
+    <script src="./resources/files/simple-image.js"></script>
+    <script src="./resources/files/embed.js"></script>
+    <script src="./resources/files/delimiter.js"></script>
+    <script src="./resources/files/bundle.min.js"></script>
+    <script type="text/javascript" src="./resources/files/crypto-js.min.js"></script>
+    <!-- <script src="./resources/drive.js"></script> -->
+    <script src="./resources/index.js"></script>
+</html>
